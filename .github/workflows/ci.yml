@@ -17,5 +17,11 @@ jobs:
       run: npm run build
     - name: Run .dot net test
       run: dotnet test
+    - name: Test frontend assets
+      working-directory: DotnetTemplate.Web
+      run: npm t  
+    - name: Linting
+      working-directory: DotnetTemplate.Web
+      run: npm run lint 
 
 
