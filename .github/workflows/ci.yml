@@ -23,7 +23,7 @@ jobs:
     - name: Test frontend assets
       working-directory: DotnetTemplate.Web
       run: npm t  
-    - name: Linting
+    - name: Linting renamed
       working-directory: DotnetTemplate.Web
       run: npm run lint 
 
