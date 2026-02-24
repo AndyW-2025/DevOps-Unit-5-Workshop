@@ -5,26 +5,30 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build and test
+  frontend:
+    name: Build and test frontend
     runs-on: ubuntu-latest      # Sets the build environment a machine with the latest Ubuntu installed
     steps:
     - uses: actions/checkout@v4 # Adds a step to checkout the repository code
-    - name: Build project
-      run: dotnet build --configuration Release
     - name: Install Node dependencies
       working-directory: DotnetTemplate.Web
       run: npm install
     - name: Build frontend assets
       working-directory: DotnetTemplate.Web
       run: npm run build
-    - name: Run .dot net test
-      run: dotnet test
     - name: Test frontend assets
       working-directory: DotnetTemplate.Web
       run: npm t  
     - name: Linting
       working-directory: DotnetTemplate.Web
       run: npm run lint 
-
+  backend:
+    name: Build and test backend
+    runs-on: ubuntu-latest      # Sets the build environment a machine with the latest Ubuntu installed
+    steps:
+    - uses: actions/checkout@v4 # Adds a step to checkout the repository code
+    - name: Build project
+      run: dotnet build --configuration Release
+    - name: Run .dot net test
+      run: dotnet test
 
